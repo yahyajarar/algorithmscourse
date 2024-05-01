@@ -1,0 +1,51 @@
+factorial by iterative:
+#include <iostream>
+#include <chrono>
+using namespace std;
+using namespace std::chrono;
+// Function to calculate factorial iteratively
+unsigned long long factorialIterative(int n) {
+ unsigned long long result = 1;
+ for (int i = 2; i <= n; ++i) {
+ result *= i;
+ }
+ return result;
+}
+int main() {
+ long long int n;
+ cout << "Enter a number to calculate its factorial: ";
+ cin >> n;
+ auto start = high_resolution_clock::now(); // Start measuring time
+ // Calculate factorial
+ unsigned long long fact = factorialIterative(n);
+ auto stop = high_resolution_clock::now(); // Stop measuring time
+ auto duration = duration_cast<microseconds>(stop - start);
+ cout << "Factorial of " << n << " is: " << fact << endl;
+ cout << "Time taken for execution: " << duration.count() << " microseconds" << endl;
+ return 0;
+}
+code by recursion:
+#include <iostream>
+#include <chrono>
+using namespace std;
+using namespace std::chrono;
+// Function to calculate factorial recursively
+unsigned long long factorialRecursive(int n) {
+ if (n == 0 || n == 1)
+ return 1;
+ else
+ return n * factorialRecursive(n - 1);
+}
+int main() {
+ int n;
+ cout << "Enter a number to calculate its factorial: ";
+ cin >> n;
+ auto start = high_resolution_clock::now(); // Start measuring time
+ // Calculate factorial
+ unsigned long long fact = factorialRecursive(n);
+ auto stop = high_resolution_clock::now(); // Stop measuring time
+ auto duration = duration_cast<microseconds>(stop - start);
+ cout << "Factorial of " << n << " is: " << fact << endl;
+ cout << "Time taken for execution: " << duration.count() << " microseconds" << endl;
+ return 0;
+}
